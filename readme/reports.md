@@ -28,7 +28,7 @@ designs:
 ```
 The descriptor format is the Reporting module's; see its documentation for the supported dataset and design types.
 
-This domain runs last, after the metadata a report may depend on has been loaded. It requires Reporting 1.21.0 or later.
+This domain is loaded after the metadata domains a report may depend on, such as concepts, encounter types, locations and forms. It requires Reporting 1.21.0 or later.
 
 #### Loading behaviour
 * Descriptors are reloaded on every start. No checksums are kept, since a descriptor's SQL and templates live in files beside it.

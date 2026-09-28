@@ -287,14 +287,14 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- For the reports domain tests and the Validator -->
         <dependency>
             <groupId>org.openmrs.module</groupId>
             <artifactId>reporting-api</artifactId>
             <version>${reportingVersion}</version>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
 
+        <!-- For Validator -->
         <dependency>
             <groupId>org.openmrs.module</groupId>
             <artifactId>reporting-api-2.0</artifactId>

@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.Collections;
@@ -64,11 +65,15 @@ public class ReportsLoaderIntegrationTest extends DomainBaseModuleContextSensiti
 		assertEquals(1, designs.size());
 	}
 	
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void loadUnsafe_shouldThrowOnUnparsableDescriptorWhenDoThrow() throws Exception {
 		File unparsable = writeUnparsableDescriptor();
 		try {
 			loader.loadUnsafe(Collections.emptyList(), true);
+			fail("The unparsable descriptor should have stopped the load");
+		}
+		catch (RuntimeException e) {
+			assertThat(e.getCause().getMessage(), endsWith("unparsable.yml"));
 		}
 		finally {
 			FileUtils.deleteQuietly(unparsable);

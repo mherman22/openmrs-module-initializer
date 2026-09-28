@@ -60,5 +60,8 @@ Just run the fatjar with no arguments (or with the `--help` argument) to get a l
 ```bash
 java -jar validator/target/initializer-validator-2.13.0-SNAPSHOT.jar
 ```
+#### Reports
+The validator bundles the Reporting module, so it also loads the descriptors of the [reports domain](reports.md). A descriptor that uses a dataset factory from a module the validator does not bundle fails validation.
+
 #### Note
 Make sure to have the Docker Engine installed before running the validator. Please refer to the [installation docs](https://docs.docker.com/engine/install) for details.

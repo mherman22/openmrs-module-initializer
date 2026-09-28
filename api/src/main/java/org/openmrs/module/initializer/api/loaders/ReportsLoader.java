@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Loads the Reporting module's report descriptors from {@code reports/reportdescriptors} through
- * its own {@link ReportLoader}, on every start since a descriptor's SQL lives in files beside it.
+ * its own {@link ReportLoader}, without checksums since a descriptor's SQL lives in files beside it.
  */
 @OpenmrsProfile(modules = { "reporting:1.21.0-9.*" })
 public class ReportsLoader extends BaseLoader {

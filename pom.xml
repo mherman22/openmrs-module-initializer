@@ -89,6 +89,8 @@
 
         <!-- For the reports domain and the Validator -->
         <reportingVersion>1.21.0</reportingVersion>
+
+        <!-- For Validator -->
         <calculationVersion>1.2</calculationVersion>
         <serializationVersion>0.2.14</serializationVersion>
 

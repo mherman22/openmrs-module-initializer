@@ -47,8 +47,8 @@ public class ReportsLoaderIntegrationTest extends DomainBaseModuleContextSensiti
 	private ReportService reportService;
 	
 	@Test
-	public void loadUnsafe_shouldSaveReportDefinitionsFromDescriptors() throws Exception {
-		loader.loadUnsafe(Collections.emptyList(), true);
+	public void loadUnsafe_shouldSaveReportDefinitionsFromDescriptorsWhenNotDoThrow() throws Exception {
+		loader.loadUnsafe(Collections.emptyList(), false);
 		
 		ReportDefinition rd = reportDefinitionService.getDefinitionByUuid("b7f5a4f4-9d8e-4a5b-8c3e-2f6d1e0a9c11");
 		assertNotNull(rd);

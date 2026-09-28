@@ -61,7 +61,7 @@ Just run the fatjar with no arguments (or with the `--help` argument) to get a l
 java -jar validator/target/initializer-validator-2.13.0-SNAPSHOT.jar
 ```
 #### Reports
-The validator bundles Reporting 1.21.0, so it also loads the descriptors of the [reports domain](reports.md). A descriptor that uses a feature added in a later Reporting release, such as a dataset type other than `sql`, fails validation.
+The validator bundles Reporting 1.21.0, so it also loads the descriptors of the [reports domain](reports.md). A descriptor that uses a feature added after Reporting 1.21.0 fails validation.
 
 #### Note
 Make sure to have the Docker Engine installed before running the validator. Please refer to the [installation docs](https://docs.docker.com/engine/install) for details.

@@ -31,7 +31,7 @@ The descriptor format is the Reporting module's; see its documentation for the s
 This domain is loaded after the metadata domains a report may depend on, such as concepts, encounter types, locations and forms. It requires Reporting 1.21.0 or later.
 
 #### Loading behaviour
-* Descriptors are reloaded whenever Initializer loads this domain. No checksums are kept, since a descriptor's Excel templates live in files beside it and are copied in when it is loaded.
+* Descriptors are reloaded whenever Initializer loads this domain. No checksums are kept, since the templates of a descriptor's report designs live in files beside it and are copied in when it is loaded.
 * Wildcard exclusions do not apply to this domain, because the Reporting module lists the descriptor files itself. The whole domain can still be excluded.
 * No Reporting release provides `ReportLoader.loadReportsFromConfig(boolean)` yet; once one does, Initializer passes it its own throw-on-error setting. With Reporting 1.21.0 to 2.1.0, the first invalid descriptor stops the Reporting module's load, so the descriptors it had not yet saved are skipped. Every descriptor is parsed before any is saved, so one that cannot be parsed skips them all. The error message is logged, and it stops Initializer only when Initializer is configured to stop on errors.
 

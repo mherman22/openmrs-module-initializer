@@ -11,8 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Loads the Reporting module's report descriptors from {@code reports/reportdescriptors} through
- * its own {@link ReportLoader}, without checksums since a descriptor pulls in its Excel templates.
+ * Loads report descriptors from {@code reports/reportdescriptors} through Reporting's
+ * {@link ReportLoader}, skipping checksums because a descriptor also pulls in its design templates.
  */
 @OpenmrsProfile(modules = { "reporting:1.21.0-9.*" })
 public class ReportsLoader extends BaseLoader {
@@ -39,7 +39,7 @@ public class ReportsLoader extends BaseLoader {
 	}
 	
 	private void loadReportsFromConfig(boolean doThrow) throws Exception {
-		// Reporting 1.21.0 to 2.1.0 have no loadReportsFromConfig(boolean) and stop at the first invalid descriptor
+		// Keep this fallback: Reporting 1.21.0 to 2.1.0 have no loadReportsFromConfig(boolean)
 		Method method;
 		try {
 			method = ReportLoader.class.getMethod("loadReportsFromConfig", boolean.class);

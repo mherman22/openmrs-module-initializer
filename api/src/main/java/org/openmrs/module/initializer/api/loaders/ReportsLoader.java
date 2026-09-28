@@ -39,7 +39,7 @@ public class ReportsLoader extends BaseLoader {
 	}
 	
 	private void loadReportsFromConfig(boolean doThrow) throws Exception {
-		// Reporting releases without loadReportsFromConfig(boolean) stop at the first invalid descriptor
+		// Reporting 1.21.0 to 2.1.0 have no loadReportsFromConfig(boolean) and stop at the first invalid descriptor
 		Method method;
 		try {
 			method = ReportLoader.class.getMethod("loadReportsFromConfig", boolean.class);

@@ -87,7 +87,7 @@
         <datafilterVersion>1.0.0</datafilterVersion>
         <queueVersion>2.1.0</queueVersion>
 
-        <!-- For Validator -->
+        <!-- For the reports domain and the Validator -->
         <reportingVersion>1.21.0</reportingVersion>
         <calculationVersion>1.2</calculationVersion>
         <serializationVersion>0.2.14</serializationVersion>
@@ -285,7 +285,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- For Validator -->
+        <!-- For the reports domain tests and the Validator -->
         <dependency>
             <groupId>org.openmrs.module</groupId>
             <artifactId>reporting-api</artifactId>

@@ -14,14 +14,17 @@ import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.openmrs.module.initializer.DomainBaseModuleContextSensitiveTest;
 import org.openmrs.module.initializer.api.loaders.ReportsLoader;
+import org.openmrs.module.reporting.config.ReportLoader;
 import org.openmrs.module.reporting.dataset.definition.DataSetDefinition;
 import org.openmrs.module.reporting.dataset.definition.SqlFileDataSetDefinition;
 import org.openmrs.module.reporting.report.ReportDesign;
@@ -59,5 +62,39 @@ public class ReportsLoaderIntegrationTest extends DomainBaseModuleContextSensiti
 		
 		List<ReportDesign> designs = reportService.getReportDesigns(rd, CsvReportRenderer.class, false);
 		assertEquals(1, designs.size());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void loadUnsafe_shouldThrowOnUnparsableDescriptorWhenDoThrow() throws Exception {
+		File unparsable = writeUnparsableDescriptor();
+		try {
+			loader.loadUnsafe(Collections.emptyList(), true);
+		}
+		finally {
+			FileUtils.deleteQuietly(unparsable);
+		}
+	}
+	
+	/**
+	 * Reporting 1.21.0 to 2.1.0 parse every descriptor before saving any, so one unparsable descriptor
+	 * keeps the valid one from loading.
+	 */
+	@Test
+	public void loadUnsafe_shouldNotThrowNorSaveValidDescriptorWhenAnotherIsUnparsableAndNotDoThrow() throws Exception {
+		File unparsable = writeUnparsableDescriptor();
+		try {
+			loader.loadUnsafe(Collections.emptyList(), false);
+		}
+		finally {
+			FileUtils.deleteQuietly(unparsable);
+		}
+		
+		assertNull(reportDefinitionService.getDefinitionByUuid("b7f5a4f4-9d8e-4a5b-8c3e-2f6d1e0a9c11"));
+	}
+	
+	private File writeUnparsableDescriptor() throws Exception {
+		File file = new File(ReportLoader.getReportingDescriptorsConfigurationDir(), "unparsable.yml");
+		FileUtils.writeStringToFile(file, "uuid: \"4c2e9b1a-6f3d-4e8a-9b7c-1d5f0a2e3b44\"\nname: [never closed\n", "UTF-8");
+		return file;
 	}
 }

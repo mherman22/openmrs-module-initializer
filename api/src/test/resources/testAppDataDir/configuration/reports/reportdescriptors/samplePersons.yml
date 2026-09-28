@@ -1,0 +1,14 @@
+key: "iniz.sample.persons"
+uuid: "b7f5a4f4-9d8e-4a5b-8c3e-2f6d1e0a9c11"
+name: "Sample Persons Report"
+description: "Lists persons and their gender."
+parameters:
+  - key: "startDate"
+    type: "java.util.Date"
+    label: "Start Date"
+datasets:
+  - key: "persons"
+    type: "sql"
+    config: "sql/persons.sql"
+designs:
+  - type: "csv"

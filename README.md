@@ -99,6 +99,7 @@ configuration/
   ├── providerroles/
   ├── queues/
   ├── relationshiptypes/
+  ├── reports/
   ├── roles/
   └── systemtasks/
    
@@ -178,6 +179,7 @@ This is the list of currently supported domains in their loading order:
 1. [AMPATH Forms Translations (JSON files)](readme/ampathformstranslations.md)
 1. [HTML Forms (XML files)](readme/htmlforms.md)
 1. [Disposition Config (json file)](readme/dispositions.md)
+1. [Reports (YAML report descriptors)](readme/reports.md)
 
 ## Try it out
 Build the master branch and install the built OMOD to your OpenMRS instance:
@@ -200,6 +202,7 @@ mvn clean package
 * Metadata Sharing 1.2.2 (*compatible*)
 * Metadata Mapping 1.3.4 (*compatible*)
 * Open Concept Lab 1.2.9 (*compatible*)
+* Reporting 1.21.0 (*compatible*)
 * Tasks 1.0.0 (*compatible*)
 
 ### Test your OpenMRS configs
@@ -232,6 +235,7 @@ See the [documentation on Initializer's logging properties](readme/rtprops.md#lo
 ## Releases notes
 #### version 2.13.0
 * Fix order types domain to apply the parent for order types with concrete Java classes (e.g. org.openmrs.DrugOrder)
+* Add a reports domain that loads the Reporting module's report descriptors
 
 #### version 2.12.0
 * Fix conceptsets domain to prevent incorrect unretiring of associated concept

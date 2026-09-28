@@ -60,7 +60,8 @@ public enum Domain {
 	AMPATH_FORMS,
 	AMPATH_FORMS_TRANSLATIONS,
 	HTML_FORMS,
-	DISPOSITIONS;
+	DISPOSITIONS,
+	REPORTS;
 	
 	public int getOrder() {
 		return ArrayUtils.indexOf(values(), this) + 1;

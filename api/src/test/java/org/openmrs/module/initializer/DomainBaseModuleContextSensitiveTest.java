@@ -151,6 +151,11 @@ public abstract class DomainBaseModuleContextSensitiveTest extends BaseModuleCon
 			ModuleFactory.getStartedModulesMap().put(mod.getModuleId(), mod);
 		}
 		{
+			Module mod = new Module("", "reporting", "", "", "", "1.21.0");
+			mod.setFile(new File(""));
+			ModuleFactory.getStartedModulesMap().put(mod.getModuleId(), mod);
+		}
+		{
 			try {
 				Class.forName("org.bahmni.module.bahmnicore.Activator");
 				Module mod = new Module("", "bahmnicore", "", "", "", "0.93-1.1.0");
